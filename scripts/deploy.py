@@ -1,0 +1,13 @@
+from brownie import OurToken
+from scripts.helpful_scripts import get_account
+from web3 import Web3
+
+def deploy_ourtoken():
+    initial_supply = Web3.toWei(1000, "ether")
+    account = get_account()
+    our_token = OurToken.deploy(initial_supply, {"from":account})
+    print(our_token.name())
+
+
+def main():
+    deploy_ourtoken()
